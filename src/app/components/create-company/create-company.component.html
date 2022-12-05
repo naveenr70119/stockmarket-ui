@@ -1,0 +1,45 @@
+<div class="col-md-6 offset-md-3">
+<h3>Create Company</h3>
+<div [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Company Name </label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="company.name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="code">Company Code</label>
+      <input type="text" class="form-control" id="code" required [(ngModel)]="company.code" name="code">
+    </div>
+    
+    <div class="form-group">
+        <label for="ceo">Company CEO</label>
+        <input type="text" class="form-control" id="ceo" required [(ngModel)]="company.ceo" name="ceo">
+      </div>
+
+      
+    <div class="form-group">
+        <label for="website">Company WebSite</label>
+        <input type="text" class="form-control" id="website" required [(ngModel)]="company.website" name="website">
+      </div>
+
+      
+    <div class="form-group">
+        <label for="turnover">Company Turnover</label>
+        <input type="text" class="form-control" id="turnover" required [(ngModel)]="company.turnover" name="turnover">
+      </div>
+
+    <div class="form-group">
+      <label for="stockExchange">Stock Exchange</label>
+      <input type="text" class="form-control" id="stockExchange" required [(ngModel)]="company.stockExchange" name="stockExchange">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+</div>

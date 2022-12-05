@@ -1,0 +1,39 @@
+<div class="container">
+<h2>Company List</h2>
+<div class="scrollit">
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Company Code</th>
+            <th>Stock Exchange</th>
+            <th>Stock Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let company of companies">
+            <td> {{company.name}}</td>
+            <td> {{company.code}}</td>
+            <td>{{company.stockExchange}}</td>
+            <td>{{company.price}}</td>
+            <td>
+                <button (click)="updateCompany(company.code)" class="btn btn-info">Update</button>
+            </td>
+            <td>
+                <button (click)="deleteCompany(company.code)" class="btn btn-danger">Delete</button>
+            </td> 
+            <td>
+                <button (click)="addStocks(company.code)" class="btn btn-info">Add Stocks</button>
+            </td> 
+            <td>
+                <button (click)="viewStocks(company.code)" class="btn btn-info">View Stocks</button>
+            </td> 
+        </tr>
+    </tbody>
+
+</table>
+
+</div>
+</div>
+

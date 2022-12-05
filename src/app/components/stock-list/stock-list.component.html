@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Stock List</h2>
+    <div class="col-md-5">
+        <label> Start Date</label>
+        <input type="date" style="width: 100%;" class="mb-3" [ngModel]="startdate | date:'yyyy-MM-dd'"  (ngModelChange)="startdate = $event"  name="startdate"><br>
+        <label> End Date</label>
+        <input type="date" style="width: 100%;" class="mb-3" [ngModel]="enddate | date:'yyyy-MM-dd'"   (ngModelChange)="enddate = $event" name="enddate"  ><br>
+        <button  (click)="search(startdate,enddate)" class="btn btn-success">Search</button>
+    </div>
+    <div class="scrollit">
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Company Code</th>
+                <th>Stock Date</th>
+                <th>Stock Time</th>
+                <th>Stock Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let stock of stocks">
+                <td> {{stock.code}}</td>
+                <td> {{stock.date}}</td>
+                <td>{{stock.time}}</td>
+                <td>{{stock.price}}</td>
+                <td>
+                    <button (click)="updateStock(stock.id)" class="btn btn-info">Update</button>
+                </td>
+                <td>
+                    <button (click)="deleteStock(stock.id,stock.code)" class="btn btn-danger">Delete</button>
+                </td> 
+                <!-- <td>
+                    <button (click)="viewStocks(company.code)" class="btn btn-info">View Stocks</button>
+                </td>  -->
+            </tr>
+        </tbody>
+    
+    </table>
+    
+    </div>
+    </div>
+    
+    
