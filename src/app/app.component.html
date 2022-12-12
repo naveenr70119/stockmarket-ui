@@ -1,29 +1,49 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark" *ngIf="isLoggedIn">
  
   <ul class="navbar-nav">
     <li class="nav-item">
         <a routerLink="companies" class="nav-link" routerLinkActive="active">Company List</a>
     </li>
     <li class="nav-item">
-      <a href="create-company" class="nav-link">Add Company</a>
+      <a routerLink="create-company" class="nav-link" routerLinkActive="active">Add Company</a>
   </li>
+  <!-- <li class="nav-item navbar-nav  navbar-right">
+    <p>
+      <button (click)="logout()">
+        Logout
+      </button>
+    </p>
+</li> -->
   </ul>
+  
 </nav>
+<div style="text-align:end">
+
+    <p>
+      <button (click)="logout()">
+        Logout
+      </button>
+    </p>
+  </div>
+
 
 <div class="container">
   <br>
   <h2 style="text-align: center;">{{title}}</h2>
   <hr>  
   <div class="card">
-    <div class="card-body"> -->
+    <div class="card-body"> 
   <router-outlet></router-outlet>
   </div>
   </div>
 </div>
 
 
+<!-- <app-login ></app-login> -->
+
 <!-- <footer class="footer">
   <div class="container">
       <span>2022</span>
   </div>
+  *ngIf="islogged"
 </footer> -->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from 'src/app/model/company';
+import { Company1 } from 'src/app/model/company1';
 import { CompanyService } from 'src/app/service/company.service';
 
 @Component({
@@ -13,13 +14,13 @@ export class UpdateCompanyComponent implements OnInit{
   code!:string;
   submitted = false;
   company: Company = new Company();
-
   constructor(private companyService:CompanyService,private route:ActivatedRoute,private router:Router)
   {
 
   }
   ngOnInit(): void {
     this.code=this.route.snapshot.params['code'];
+    
     this.companyService.getCompanyByCode(this.code).subscribe(data=>{
       this.company=data;},error=>console.error()
       );
@@ -32,7 +33,8 @@ export class UpdateCompanyComponent implements OnInit{
   }
 
   saveCompany() {
-    this.companyService.createCompany(this.company)
+    
+    this.companyService.updateCompany(this.company)
       .subscribe(data => console.log(data), error => console.log(error));
     this.gotocompanyList();
   }

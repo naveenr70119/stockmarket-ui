@@ -8,7 +8,12 @@ import { Stock } from '../model/stock';
 })
 export class StockService {
 
+  
   baseUrl="http://localhost:9081/api/v1/stock/"
+
+ // baseUrl="http://ec2-13-112-243-172.ap-northeast-1.compute.amazonaws.com:9081/api/v1/stock/"
+
+
 
   constructor(private httpClient:HttpClient) { }
 

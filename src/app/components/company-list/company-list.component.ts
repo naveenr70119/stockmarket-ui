@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Company } from 'src/app/model/company';
 import { Stock } from 'src/app/model/stock';
 import { CompanyService } from 'src/app/service/company.service';
@@ -14,12 +15,15 @@ export class CompanyListComponent implements OnInit {
   companies!: Company[];
   stock!:Stock;
   code!:string;
+  isLoggedIn$!: Observable<boolean>;
  constructor(private companyService:CompanyService,private route:Router,private stockService:StockService){
     
     }
 
   ngOnInit() {
    this.getCompanyList();
+   var data=localStorage.getItem('loggedIn');
+console.log(data)
   
   }
 

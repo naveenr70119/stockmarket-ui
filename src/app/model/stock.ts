@@ -2,7 +2,7 @@ import { Time } from "@angular/common";
 
 export class Stock {
     id!:number;
-    price!:string;
+    price!:number;
     date!:Date;
     code!:string;
     time!:Time;

@@ -1,45 +1,66 @@
 <div class="col-md-6 offset-md-3">
 <h3>Create Company</h3>
+<div class="alert" *ngIf="isErrorOccured">
+<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+<strong>Error!</strong>{{errorMessage}}
+</div>
 <div [hidden]="submitted">
-  <form (ngSubmit)="onSubmit()">
+  <form [formGroup]="createCompany" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Company Name </label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="company.name" name="name">
+      <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="company.name" name="name">
+    <span class="text-danger" *ngIf="createCompany.controls['name'].invalid && createCompany.controls['name'].touched">
+      Name is required
+    </span>
     </div>
-
+    
     <div class="form-group">
       <label for="code">Company Code</label>
-      <input type="text" class="form-control" id="code" required [(ngModel)]="company.code" name="code">
+      <input type="text" class="form-control" id="code" formControlName="code" [(ngModel)]="company.code" name="code">
+      <span class="text-danger" *ngIf="createCompany.controls['code'].invalid && createCompany.controls['code'].touched">
+        Company Code is required
+      </span>
     </div>
     
     <div class="form-group">
         <label for="ceo">Company CEO</label>
-        <input type="text" class="form-control" id="ceo" required [(ngModel)]="company.ceo" name="ceo">
+        <input type="text" class="form-control" id="ceo" formControlName="ceo" [(ngModel)]="company.ceo" name="ceo">
+        <span class="text-danger" *ngIf="createCompany.controls['ceo'].invalid && createCompany.controls['ceo'].touched">
+          ceo is required
+        </span>
+      
       </div>
 
       
     <div class="form-group">
         <label for="website">Company WebSite</label>
-        <input type="text" class="form-control" id="website" required [(ngModel)]="company.website" name="website">
+        <input type="text" class="form-control" id="website" formControlName="website" [(ngModel)]="company.website" name="website">
+        <span class="text-danger" *ngIf="createCompany.controls['website'].invalid && createCompany.controls['website'].touched">
+          website is required
+        </span>
+      
       </div>
 
       
     <div class="form-group">
         <label for="turnover">Company Turnover</label>
-        <input type="text" class="form-control" id="turnover" required [(ngModel)]="company.turnover" name="turnover">
+        <input type="number" class="form-control" id="turnover" formControlName="turnover"  [(ngModel)]="company.turnover" name="turnover">
+        <span class="text-danger" *ngIf="createCompany.controls['turnover'].invalid">
+          TurnOver should be greater than 10 cr
+        </span>
+      
       </div>
 
     <div class="form-group">
       <label for="stockExchange">Stock Exchange</label>
-      <input type="text" class="form-control" id="stockExchange" required [(ngModel)]="company.stockExchange" name="stockExchange">
+      <input type="text" class="form-control" id="stockExchange" formControlName="stockExchange"  [(ngModel)]="company.stockExchange" name="stockExchange">
+      <span class="text-danger" *ngIf="createCompany.controls['stockExchange'].invalid && createCompany.controls['stockExchange'].touched">
+        stock exchange is required
+      </span>
+    
     </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="!createCompany.valid">Submit</button>
   </form>
 </div>
 
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
-  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
-</div>
-</div>

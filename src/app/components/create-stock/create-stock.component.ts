@@ -13,6 +13,7 @@ export class CreateStockComponent {
   submitted = false;
   stock: Stock = new Stock();
   code!:string;
+  bsConfig!:any;
 
   constructor(private stockService:StockService,private router:Router,private route:ActivatedRoute)
   {
